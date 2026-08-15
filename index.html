@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>极影风暴</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+background:#ffffff;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+overflow:hidden;
+}
+/* 左上角LOGO */
+.logo-img{
+width:120px;
+max-width:85vw;
+margin:24px 0 0 24px;
+}
+
+/* ==========【视频容器区域】==========
+这里就是放50个视频的位置！！ */
+.video-container{
+width:96%;
+margin: 40px auto;
+display: grid;
+/* 自动多列布局，电脑6列，手机自适应 */
+grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap:24px;
+}
+/* 视频盒子样式模板 */
+.video-item{
+aspect-ratio: 16 / 9;
+background:#f1f1f1;
+border-radius:6px;
+overflow:hidden;
+}
+.video-item video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* 底部滚动横幅 */
+.scroll-wrap{
+width:100%;
+overflow:hidden;
+padding-bottom:20px;
+}
+.scroll-box{
+display:flex;
+animation: scrollRun 22s linear infinite;
+}
+.scroll-img{
+height:160px;
+margin:0 15px;
+}
+@keyframes scrollRun{
+0%{transform: translateX(0);}
+100%{transform: translateX(-50%);}
+}
+</style>
+</head>
+<body>
+
+<!-- 左上角LOGO -->
+< img class="logo-img" src="https://iili.io/CiU37Ul.png" alt="极影风暴">
+
+<!-- =======================
+【重点：50个视频全部粘贴在这里面】
+======================= -->
+<div class="video-container">
+
+<!-- 视频模板，复制下面这一行反复粘贴50次，修改src视频地址 -->
+<!--
+<div class="video-item">
+  <video src="这里填写你的视频链接" controls preload="none"></video>
+</div>
+-->
+
+</div>
+
+<!-- 底部无限滚动横幅 -->
+<div class="scroll-wrap">
+    <div class="scroll-box">
+        < img class="scroll-img" src="https://iili.io/CiUFWhX.png">
+        < img class="scroll-img" src="https://iili.io/CiUFWhX.png">
+        < img class="scroll-img" src="https://iili.io/CiUFWhX.png">
+        < img class="scroll-img" src="https://iili.io/CiUFWhX.png">
+        < img class="scroll-img" src="https://iili.io/CiUFWhX.png">
+        < img class="scroll-img" src="https://iili.io/CiUFWhX.png">
+    </div>
+</div>
+
+</body>
+</html>
