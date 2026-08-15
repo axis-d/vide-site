@@ -12,16 +12,40 @@ min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-overflow:hidden;
+overflow-x:hidden;
 }
 .logo-img{
 width:120px;
 max-width:85vw;
 margin:24px 0 0 24px;
 }
+.photo-title{
+width:96%;
+margin:30px auto 10px;
+font-size:28px;
+font-weight:bold;
+}
+.photo-container{
+width:96%;
+margin:0 auto 40px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+gap:20px;
+}
+.photo-item{
+width:100%;
+border-radius:8px;
+overflow:hidden;
+}
+.photo-item img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
 .video-container{
 width:96%;
-margin: 40px auto;
+margin: 20px auto 40px;
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 gap:24px;
@@ -58,6 +82,14 @@ margin:0 15px;
 </head>
 <body>
 <img class="logo-img" src="https://iili.io/CiU37Ul.png" alt="极影风暴">
+<h2 class="photo-title">青海</h2>
+<div class="photo-container">
+    <div class="photo-item"><img src="images/qinghai/qinghai1.jpg"></div>
+    <div class="photo-item"><img src="images/qinghai/qinghai2.jpg"></div>
+    <div class="photo-item"><img src="images/qinghai/qinghai3.jpg"></div>
+    <div class="photo-item"><img src="images/qinghai/qinghai4.jpg"></div>
+    <div class="photo-item"><img src="images/qinghai/qinghai5.jpg"></div>
+</div>
 <div class="video-container">
 </div>
 <div class="scroll-wrap">
