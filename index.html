@@ -5,92 +5,308 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>极影风暴</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;}
 body{
-background:#ffffff;
+background:#f7f8fa;
 min-height:100vh;
+color:#111;
+overflow-x:hidden;
+line-height:1.6;
+}
+#splash{
+position:fixed;
+top:0;left:0;
+width:100%;height:100vh;
+background:#0a0a0a;
 display:flex;
 flex-direction:column;
-justify-content:space-between;
-overflow-x:hidden;
+align-items:center;
+justify-content:center;
+z-index:99999;
+transition:opacity 0.8s ease, visibility 0.8s ease;
 }
-.logo-img{
-width:120px;
-max-width:85vw;
-margin:24px 0 0 24px;
+#splash.hide{
+opacity:0;
+visibility:hidden;
 }
-.photo-title{
-width:96%;
-margin:30px auto 10px;
-font-size:28px;
-font-weight:bold;
+.splash-logo{
+width:220px;
+max-width:70vw;
+opacity:0;
+transform:scale(0.6);
+animation:splashLogoIn 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
 }
-.photo-container{
-width:96%;
-margin:0 auto 40px;
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-gap:20px;
+@keyframes splashLogoIn{
+0%{opacity:0;transform:scale(0.6);}
+60%{opacity:1;transform:scale(1.08);}
+100%{opacity:1;transform:scale(1);}
 }
-.photo-item{
-width:100%;
-border-radius:8px;
+.splash-bar{
+width:200px;
+max-width:60vw;
+height:3px;
+background:rgba(255,255,255,0.15);
+border-radius:3px;
+margin-top:40px;
 overflow:hidden;
+opacity:0;
+animation:splashBarIn 0.5s ease 0.8s forwards;
 }
-.photo-item img{
-width:100%;
+.splash-bar-inner{
 height:100%;
+width:0%;
+background:linear-gradient(90deg,#3b82f6,#60a5fa);
+border-radius:3px;
+animation:splashBarFill 1.6s ease 0.9s forwards;
+}
+@keyframes splashBarIn{
+to{opacity:1;}
+}
+@keyframes splashBarFill{
+0%{width:0%;}
+100%{width:100%;}
+}
+.splash-text{
+color:rgba(255,255,255,0.5);
+font-size:13px;
+letter-spacing:4px;
+margin-top:18px;
+opacity:0;
+animation:splashTextIn 0.6s ease 1s forwards;
+}
+@keyframes splashTextIn{
+to{opacity:1;}
+}
+header{
+background:rgba(255,255,255,0.82);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+position:sticky;
+top:0;
+z-index:999;
+border-bottom:1px solid #e5e7eb;
+}
+.nav-wrap{
+max-width:1480px;
+margin:0 auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:8px 18px;
+}
+.logo{
+width:80px;
+}
+.nav-menu{
+display:flex;
+gap:40px;
+align-items:center;
+}
+.nav-item{
+font-size:16px;
+color:#222831;
+cursor:pointer;
+position:relative;
+transition:0.28s ease;
+font-weight:500;
+}
+.nav-item::after{
+content:"";
+position:absolute;
+width:0%;
+height:2px;
+background:#2563eb;
+left:0;
+bottom:-6px;
+transition:0.32s ease;
+}
+.nav-item:hover::after,.nav-item.active::after{
+width:100%;
+}
+.nav-item:hover{
+color:#2563eb;
+}
+.page-block{
+max-width:1480px;
+margin:48px auto;
+padding:0 28px;
+display:none;
+}
+.page-block.show{
+display:block;
+}
+h2.block-title{
+font-size:34px;
+margin-bottom:30px;
+font-weight:600;
+color:#0f172a;
+}
+h3.sub-title{
+font-size:23px;
+margin:14px 0 22px;
+color:#1e293b;
+}
+.desc-text{
+font-size:17px;
+color:#475569;
+margin-bottom:36px;
+max-width:720px;
+}
+.photo-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(342px,1fr));
+gap:24px;
+margin-bottom:54px;
+}
+.photo-card{
+border-radius:14px;
+overflow:hidden;
+background:#ffffff;
+box-shadow:0 2px 14px rgba(0,0,0,0.05);
+transition:0.34s ease;
+}
+.photo-card:hover{
+transform:translateY(-7px);
+box-shadow:0 10px 28px rgba(0,0,0,0.12);
+}
+.photo-card img{
+width:100%;
+aspect-ratio:16/9;
 object-fit:cover;
 display:block;
 }
-.video-container{
-width:96%;
-margin: 20px auto 40px;
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-gap:24px;
+.video-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(264px,1fr));
+gap:26px;
+margin-bottom:40px;
 }
-.video-item{
-aspect-ratio: 16 / 9;
-background:#f1f1f1;
-border-radius:6px;
+.video-card{
+background:#ffffff;
+border-radius:14px;
 overflow:hidden;
+box-shadow:0 2px 14px rgba(0,0,0,0.05);
+transition:0.34s ease;
 }
-.video-item video{
+.video-card:hover{
+transform:translateY(-7px);
+box-shadow:0 10px 28px rgba(0,0,0,0.12);
+}
+.video-card video{
 width:100%;
-height:100%;
+aspect-ratio:16/9;
 object-fit:cover;
+display:block;
+}
+.classify-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+gap:26px;
+margin-top:20px;
+}
+.classify-card{
+background:#fff;
+padding:32px 26px;
+border-radius:14px;
+box-shadow:0 2px 14px rgba(0,0,0,0.05);
+transition:0.34s;
+cursor:pointer;
+}
+.classify-card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 28px rgba(0,0,0,0.11);
+}
+.classify-card h4{
+font-size:20px;
+margin-bottom:10px;
+color:#0f172a;
+}
+.classify-card p{
+color:#475569;
+font-size:15px;
 }
 .scroll-wrap{
 width:100%;
 overflow:hidden;
-padding-bottom:20px;
+margin-top:90px;
+padding:22px 0;
+background:#ffffff;
+border-top:1px solid #e5e7eb;
 }
 .scroll-box{
 display:flex;
-animation: scrollRun 22s linear infinite;
+animation: scrollRun 26s linear infinite;
 }
 .scroll-img{
-height:160px;
-margin:0 15px;
+height:172px;
+margin:0 14px;
+border-radius:10px;
 }
 @keyframes scrollRun{
 0%{transform: translateX(0);}
 100%{transform: translateX(-50%);}
 }
+@media(max-width:768px){
+.nav-wrap{padding:12px 16px;}
+.nav-menu{gap:18px;}
+.nav-item{font-size:14px;}
+.logo{width:90px;}
+.page-block{padding:0 16px;margin:30px auto;}
+.photo-grid{grid-template-columns:1fr;}
+.video-grid{grid-template-columns:1fr;}
+.classify-grid{grid-template-columns:1fr;}
+h2.block-title{font-size:26px;}
+}
 </style>
 </head>
 <body>
-<img class="logo-img" src="https://iili.io/CiU37Ul.png" alt="极影风暴">
-<h2 class="photo-title">青海</h2>
-<div class="photo-container">
-    <div class="photo-item"><img src="images/qinghai/qinghai1.jpg"></div>
-    <div class="photo-item"><img src="images/qinghai/qinghai2.jpg"></div>
-    <div class="photo-item"><img src="images/qinghai/qinghai3.jpg"></div>
-    <div class="photo-item"><img src="images/qinghai/qinghai4.jpg"></div>
-    <div class="photo-item"><img src="images/qinghai/qinghai5.jpg"></div>
+<div id="splash">
+    <img class="splash-logo" src="https://iili.io/CiU37Ul.png" alt="极影风暴">
+    <div class="splash-bar"><div class="splash-bar-inner"></div></div>
+    <div class="splash-text">LOADING</div>
 </div>
-<div class="video-container">
+<header>
+    <div class="nav-wrap">
+        <img class="logo" src="https://iili.io/CiU37Ul.png" alt="极影风暴">
+        <div class="nav-menu">
+            <div class="nav-item active" data-target="home">首页</div>
+            <div class="nav-item" data-target="material">风暴素材库</div>
+            <div class="nav-item" data-target="category">素材分类</div>
+            <div class="nav-item" data-target="about">关于我们</div>
+        </div>
+    </div>
+</header>
+<div class="page-block show" id="home">
+    <h2 class="block-title">欢迎来到极影风暴</h2>
+    <p class="desc-text">高质量摄影图片、视频素材集合站点，前往导航菜单浏览图集与视频资源。</p>
+</div>
+<div class="page-block" id="material">
+    <h2 class="block-title">风暴素材库</h2>
+    <h3 class="sub-title">青海</h3>
+    <div class="photo-grid">
+        <div class="photo-card"><img src="./images/qinghai/qinghai1.jpg" alt="青海风景"></div>
+        <div class="photo-card"><img src="./images/qinghai/qinghai2.jpg" alt="青海风景"></div>
+        <div class="photo-card"><img src="./images/qinghai/qinghai3.jpg" alt="青海风景"></div>
+        <div class="photo-card"><img src="./images/qinghai/qinghai4.jpg" alt="青海风景"></div>
+        <div class="photo-card"><img src="./images/qinghai/qinghai5.jpg" alt="青海风景"></div>
+    </div>
+    <h3 class="sub-title">视频素材</h3>
+    <div class="video-grid">
+    </div>
+</div>
+<div class="page-block" id="category">
+    <h2 class="block-title">素材分类</h2>
+    <p class="desc-text">按题材快速筛选图片与视频素材</p>
+    <div class="classify-grid">
+        <div class="classify-card"><h4>风光摄影</h4><p>高原、山川、湖泊、天空云层实拍素材</p></div>
+        <div class="classify-card"><h4>人文纪实</h4><p>人文民俗、经幡、地域特色实拍</p></div>
+        <div class="classify-card"><h4>动态视频</h4><p>实拍短片、运镜视频素材</p></div>
+        <div class="classify-card"><h4>其他素材</h4><p>后续扩充更多题材</p></div>
+    </div>
+</div>
+<div class="page-block" id="about">
+    <h2 class="block-title">关于我们</h2>
+    <p class="desc-text">极影风暴，个人实拍素材分享站点。所有素材均为实地拍摄，持续更新更多摄影作品与视频片段。</p>
 </div>
 <div class="scroll-wrap">
     <div class="scroll-box">
@@ -102,5 +318,23 @@ margin:0 15px;
         <img class="scroll-img" src="https://iili.io/CiUFWhX.png">
     </div>
 </div>
+<script>
+window.addEventListener('load',()=>{
+    setTimeout(()=>{
+        document.getElementById('splash').classList.add('hide');
+    },2500);
+});
+const navItems = document.querySelectorAll('.nav-item');
+const blocks = document.querySelectorAll('.page-block');
+navItems.forEach(item=>{
+    item.addEventListener('click',()=>{
+        let targetId = item.dataset.target;
+        navItems.forEach(n=>n.classList.remove('active'));
+        blocks.forEach(b=>b.classList.remove('show'));
+        item.classList.add('active');
+        document.getElementById(targetId).classList.add('show');
+    })
+})
+</script>
 </body>
 </html>
