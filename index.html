@@ -147,6 +147,32 @@ background:linear-gradient(180deg,#f5f6f8,#eef0f3);border-top:1px solid rgba(0,0
 box-shadow:0 4px 16px rgba(0,0,0,0.1);flex-shrink:0;}
 @keyframes scrollRun{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
+/* 关注我们 - 抖音账号 */
+.follow-section{max-width:1440px;margin:60px auto 0;padding:0 32px;}
+.follow-title{font-size:28px;font-weight:700;color:#1a1a2e;margin-bottom:8px;text-align:center;}
+.follow-subtitle{font-size:15px;color:#888;text-align:center;margin-bottom:32px;}
+.douyin-cards{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
+.douyin-card{width:280px;background:#fff;border-radius:16px;padding:32px 28px;
+box-shadow:0 2px 16px rgba(0,0,0,0.06);transition:0.4s cubic-bezier(0.22,1,0.36,1);
+cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;
+text-decoration:none;color:inherit;position:relative;overflow:hidden;}
+.douyin-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+background:linear-gradient(90deg,#e94560,#f5a623);transform:scaleX(0);transform-origin:left;
+transition:transform 0.4s ease;}
+.douyin-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(0,0,0,0.15);}
+.douyin-card:hover::before{transform:scaleX(1);}
+.douyin-icon{width:56px;height:56px;margin-bottom:18px;}
+.douyin-name{font-size:20px;font-weight:700;color:#1a1a2e;margin-bottom:6px;}
+.douyin-id{font-size:14px;color:#999;letter-spacing:0.5px;}
+.douyin-tag{display:inline-block;margin-top:16px;padding:5px 16px;
+background:linear-gradient(135deg,#e94560,#f5a623);color:#fff;font-size:12px;
+border-radius:50px;font-weight:500;}
+@media(max-width:768px){
+.follow-section{padding:0 16px;margin-top:40px;}
+.follow-title{font-size:22px;}
+.douyin-card{width:100%;max-width:320px;}
+}
+
 /* 页脚 */
 footer{text-align:center;padding:30px;color:#999;font-size:14px;background:#eef0f3;}
 
@@ -246,6 +272,30 @@ h2.block-title{font-size:24px;}
         <img class="scroll-img" src="./images/banner_new.jpg">
         <img class="scroll-img" src="./images/banner_new.jpg">
         <img class="scroll-img" src="./images/banner_new.jpg">
+    </div>
+</div>
+
+
+<div class="follow-section">
+    <h2 class="follow-title">关注我们</h2>
+    <p class="follow-subtitle">在抖音关注我们，获取更多精彩内容</p>
+    <div class="douyin-cards">
+        <a class="douyin-card" href="https://www.douyin.com/search/XTechStorm?type=user" target="_blank" rel="noopener">
+            <svg class="douyin-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M33 6c.5 3.5 2 6.2 5.2 7.5V17c-2.8 0-5.2-.8-7.2-2.3v11.8c0 7.5-5.5 13.5-13 13.5S5 34 5 26.5c0-7 5.7-12.7 12.7-12.7.5 0 1 0 1.5.1v6.2c-.5-.1-1-.2-1.5-.2-3.5 0-6.3 2.8-6.3 6.3s2.8 6.2 6.3 6.2 6.3-2.8 6.3-6.3V6h6z" fill="#1a1a2e"/>
+            </svg>
+            <div class="douyin-name">极影风暴</div>
+            <div class="douyin-id">抖音号：XTechStorm</div>
+            <span class="douyin-tag">前往关注</span>
+        </a>
+        <a class="douyin-card" href="https://www.douyin.com/search/45315455578?type=user" target="_blank" rel="noopener">
+            <svg class="douyin-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M33 6c.5 3.5 2 6.2 5.2 7.5V17c-2.8 0-5.2-.8-7.2-2.3v11.8c0 7.5-5.5 13.5-13 13.5S5 34 5 26.5c0-7 5.7-12.7 12.7-12.7.5 0 1 0 1.5.1v6.2c-.5-.1-1-.2-1.5-.2-3.5 0-6.3 2.8-6.3 6.3s2.8 6.2 6.3 6.2 6.3-2.8 6.3-6.3V6h6z" fill="#1a1a2e"/>
+            </svg>
+            <div class="douyin-name">爱克团AXKCrew</div>
+            <div class="douyin-id">抖音号：45315455578</div>
+            <span class="douyin-tag">前往关注</span>
+        </a>
     </div>
 </div>
 
