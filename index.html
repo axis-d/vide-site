@@ -88,8 +88,7 @@ filter:drop-shadow(0 0 0 transparent);}
 header.scrolled .logo{width:52px;}
 .nav-menu{display:flex;gap:48px;align-items:center;position:relative;}
 .nav-item{font-size:14px;color:var(--text-soft);cursor:pointer;position:relative;
-transition:color 0.3s ease;font-weight:500;padding:8px 0;letter-spacing:1.5px;
-position:relative;}
+transition:color 0.3s ease;font-weight:500;padding:8px 0;letter-spacing:1.5px;}
 .nav-item::after{content:"";position:absolute;width:0%;height:2px;
 background:var(--brand);left:50%;bottom:2px;transform:translateX(-50%);
 transition:width 0.4s cubic-bezier(0.22,1,0.36,1);border-radius:2px;
@@ -131,14 +130,14 @@ bottom:15%;right:-3%;animation-delay:-4s;}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 20px;
 border:1px solid var(--border-strong);border-radius:50px;
 font-size:11px;color:var(--text-soft);letter-spacing:4px;
-margin-bottom:36px;text-transform:uppercase;backdrop-filter:blur(10px);
+margin-bottom:32px;text-transform:uppercase;backdrop-filter:blur(10px);
 background:rgba(255,255,255,0.02);
 animation:fadeInDown 1s ease 0.3s both;}
 .hero-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--brand);
 box-shadow:0 0 10px var(--brand);animation:dotPulse 2s ease infinite;}
 @keyframes dotPulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
 .hero h1{font-size:clamp(44px,8.5vw,104px);font-weight:900;color:var(--text);
-margin-bottom:28px;letter-spacing:-3px;line-height:1.02;
+margin-bottom:24px;letter-spacing:-3px;line-height:1.02;
 animation:fadeInUp 1.2s ease 0.5s both;}
 .hero h1 .line{display:block;overflow:hidden;}
 .hero h1 .accent{color:var(--brand);position:relative;display:inline-block;
@@ -146,9 +145,16 @@ text-shadow:0 0 40px rgba(255,45,45,0.3);}
 .hero h1 .accent::after{content:"";position:absolute;left:-4px;right:-4px;bottom:6px;
 height:14px;background:var(--brand-soft);z-index:-1;border-radius:4px;
 transform:skewX(-8deg);}
-.hero p{font-size:clamp(14px,1.8vw,18px);color:var(--text-soft);max-width:560px;
-margin:0 auto 48px;line-height:1.9;letter-spacing:0.5px;
-animation:fadeInUp 1.2s ease 0.7s both;}
+.hero-subtitle{font-size:clamp(15px,2vw,20px);color:var(--text);
+margin-bottom:14px;font-weight:600;letter-spacing:2px;
+animation:fadeInUp 1.2s ease 0.6s both;
+display:flex;align-items:center;justify-content:center;gap:12px;}
+.hero-subtitle .typed{color:var(--brand);border-right:2px solid var(--brand);
+padding-right:4px;animation:blink 0.8s step-end infinite;}
+@keyframes blink{0%,100%{border-color:var(--brand);}50%{border-color:transparent;}}
+.hero p{font-size:clamp(13px,1.6vw,16px);color:var(--text-soft);max-width:580px;
+margin:0 auto 44px;line-height:1.9;letter-spacing:0.5px;
+animation:fadeInUp 1.2s ease 0.75s both;}
 .hero-actions{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;
 animation:fadeInUp 1.2s ease 0.9s both;}
 .hero-btn{position:relative;display:inline-flex;align-items:center;gap:10px;
@@ -248,7 +254,8 @@ margin-bottom:16px;line-height:1.05;}
 .material-header p{font-size:16px;color:var(--text-soft);max-width:560px;line-height:1.8;}
 .material-content{max-width:1400px;margin:0 auto;padding:0 48px 90px;}
 .cat-title{font-size:26px;font-weight:800;margin:60px 0 28px;
-display:flex;align-items:center;gap:16px;color:var(--text);letter-spacing:-0.5px;}
+display:flex;align-items:center;gap:16px;color:var(--text);letter-spacing:-0.5px;
+scroll-margin-top:100px;}
 .cat-title::before{content:"";width:6px;height:30px;background:linear-gradient(180deg,var(--brand),#ff6b6b);
 border-radius:3px;box-shadow:0 0 12px var(--brand-glow);}
 .cat-title .count{font-size:13px;color:var(--text-muted);font-weight:400;
@@ -257,14 +264,14 @@ padding:4px 12px;background:var(--bg-card);border-radius:50px;border:1px solid v
 /* 图片网格 */
 .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;}
 .photo-card{position:relative;border-radius:16px;overflow:hidden;
-background:var(--bg-card);aspect-ratio:16/10;cursor:pointer;
+background:var(--bg-card);aspect-ratio:16/10;cursor:zoom-in;
 transition:all 0.5s cubic-bezier(0.22,1,0.36,1);
 border:1px solid var(--border);}
 .photo-card:hover{transform:translateY(-6px);border-color:rgba(255,45,45,0.3);
 box-shadow:0 24px 50px rgba(0,0,0,0.5),0 0 0 1px rgba(255,45,45,0.15);}
 .photo-card img{width:100%;height:100%;object-fit:cover;display:block;
 transition:transform 0.8s cubic-bezier(0.22,1,0.36,1),filter 0.5s ease;
-filter:brightness(0.9);}
+filter:brightness(0.9);pointer-events:none;}
 .photo-card:hover img{transform:scale(1.1);filter:brightness(1.05);}
 .photo-card .photo-info{position:absolute;bottom:0;left:0;right:0;padding:24px;
 background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);
@@ -272,6 +279,37 @@ opacity:0;transform:translateY(12px);transition:all 0.5s ease;}
 .photo-card:hover .photo-info{opacity:1;transform:translateY(0);}
 .photo-card .photo-info span{font-size:11px;color:var(--brand);letter-spacing:3px;
 text-transform:uppercase;font-weight:700;}
+.photo-card .zoom-icon{position:absolute;top:16px;right:16px;width:36px;height:36px;
+border-radius:50%;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);
+display:flex;align-items:center;justify-content:center;color:#fff;
+opacity:0;transform:scale(0.8);transition:all 0.4s ease;font-size:16px;}
+.photo-card:hover .zoom-icon{opacity:1;transform:scale(1);}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:10000;
+display:none;align-items:center;justify-content:center;
+backdrop-filter:blur(8px);animation:lbFadeIn 0.3s ease;}
+.lightbox.show{display:flex;}
+@keyframes lbFadeIn{from{opacity:0;}to{opacity:1;}}
+.lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;
+border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.8);
+animation:lbZoomIn 0.4s cubic-bezier(0.22,1,0.36,1);}
+@keyframes lbZoomIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
+.lightbox-close{position:absolute;top:24px;right:24px;width:48px;height:48px;
+border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;
+font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+transition:all 0.3s ease;backdrop-filter:blur(10px);}
+.lightbox-close:hover{background:var(--brand);transform:rotate(90deg);}
+.lightbox-caption{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+color:rgba(255,255,255,0.7);font-size:14px;letter-spacing:2px;}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);
+width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.08);
+border:none;color:#fff;font-size:22px;cursor:pointer;display:flex;
+align-items:center;justify-content:center;transition:all 0.3s ease;
+backdrop-filter:blur(10px);}
+.lightbox-nav:hover{background:var(--brand);}
+.lightbox-prev{left:24px;}
+.lightbox-next{right:24px;}
 
 /* 视频网格 */
 .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px;}
@@ -309,7 +347,9 @@ border:1px solid rgba(255,45,45,0.15);transition:all 0.4s ease;}
 .classify-card:hover .classify-icon{transform:scale(1.08);
 box-shadow:0 0 20px rgba(255,45,45,0.2);}
 .classify-card h4{font-size:21px;margin-bottom:10px;color:var(--text);font-weight:800;
-letter-spacing:-0.3px;}
+letter-spacing:-0.3px;display:flex;align-items:center;justify-content:space-between;}
+.classify-card h4 .arrow{font-size:16px;color:var(--text-muted);transition:all 0.3s ease;}
+.classify-card:hover h4 .arrow{color:var(--brand);transform:translateX(4px);}
 .classify-card p{color:var(--text-soft);font-size:14px;line-height:1.8;}
 
 /* 关于我们页面 */
@@ -320,6 +360,28 @@ display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;}
 margin-bottom:28px;line-height:1.15;}
 .about-text h2 .accent{color:var(--brand);text-shadow:0 0 30px rgba(255,45,45,0.2);}
 .about-text p{font-size:16px;color:var(--text-soft);line-height:2;margin-bottom:20px;}
+.about-philosophy{margin-top:36px;padding:28px;
+background:var(--bg-card);border-radius:16px;border:1px solid var(--border);
+border-left:3px solid var(--brand);}
+.about-philosophy h4{font-size:18px;font-weight:700;color:var(--text);margin-bottom:12px;
+display:flex;align-items:center;gap:10px;}
+.about-philosophy h4::before{content:"";width:4px;height:18px;background:var(--brand);border-radius:2px;}
+.about-philosophy p{font-size:14px;color:var(--text-soft);line-height:1.9;margin:0;}
+.about-team{margin-top:28px;}
+.about-team h4{font-size:18px;font-weight:700;color:var(--text);margin-bottom:16px;
+display:flex;align-items:center;gap:10px;}
+.about-team h4::before{content:"";width:4px;height:18px;background:var(--brand);border-radius:2px;}
+.team-members{display:flex;gap:16px;flex-wrap:wrap;}
+.team-member{display:flex;align-items:center;gap:12px;padding:14px 18px;
+background:var(--bg-card);border-radius:12px;border:1px solid var(--border);
+transition:all 0.3s ease;}
+.team-member:hover{border-color:rgba(255,45,45,0.2);transform:translateY(-2px);}
+.team-avatar{width:40px;height:40px;border-radius:50%;
+background:linear-gradient(135deg,var(--brand),#ff6b6b);
+display:flex;align-items:center;justify-content:center;color:#fff;
+font-weight:700;font-size:16px;}
+.team-member .tm-info .tm-name{font-size:14px;font-weight:600;color:var(--text);}
+.team-member .tm-info .tm-role{font-size:12px;color:var(--text-muted);}
 .about-features{display:flex;flex-direction:column;gap:18px;}
 .about-feature{display:flex;gap:22px;padding:28px;
 background:var(--bg-card);border-radius:16px;border:1px solid var(--border);
@@ -330,6 +392,12 @@ background:var(--bg-card-2);box-shadow:0 12px 30px rgba(0,0,0,0.4);}
 min-width:56px;line-height:1;text-shadow:0 0 20px var(--brand-glow);}
 .about-feature .feat-text h4{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text);}
 .about-feature .feat-text p{font-size:14px;color:var(--text-soft);line-height:1.7;margin:0;}
+.about-stats{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.about-stat{text-align:center;padding:24px 16px;background:var(--bg-card);
+border-radius:14px;border:1px solid var(--border);}
+.about-stat .as-num{font-size:32px;font-weight:900;color:var(--brand);
+text-shadow:0 0 16px var(--brand-glow);margin-bottom:6px;}
+.about-stat .as-label{font-size:12px;color:var(--text-soft);letter-spacing:1px;}
 
 /* 底部滚动横幅 */
 .scroll-wrap{width:100%;overflow:hidden;padding:44px 0;
@@ -393,43 +461,55 @@ border-radius:50px;font-size:12px;font-weight:600;transition:all 0.3s ease;lette
 .wechat-card:hover::after{box-shadow:0 0 50px rgba(7,193,96,0.12);}
 .wechat-card .social-icon{background:rgba(7,193,96,0.1);border:1px solid rgba(7,193,96,0.15);}
 .wechat-card:hover .social-icon{background:rgba(7,193,96,0.15);box-shadow:0 0 24px rgba(7,193,96,0.2);}
-.wechat-qr{width:148px;height:148px;border-radius:12px;margin:8px 0 16px;
-padding:6px;background:#fff;transition:transform 0.4s ease;}
-.wechat-card:hover .wechat-qr{transform:scale(1.04);}
+.wechat-qr{width:160px;height:160px;border-radius:14px;margin:8px 0 18px;
+padding:8px;background:#fff;transition:transform 0.4s ease;
+box-shadow:0 4px 20px rgba(0,0,0,0.3);}
+.wechat-card:hover .wechat-qr{transform:scale(1.05);}
 .wechat-qr img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;}
 .wechat-card .social-tag{background:rgba(7,193,96,0.12);color:var(--wechat);
 border:1px solid rgba(7,193,96,0.2);}
 .wechat-hint{font-size:12px;color:var(--text-muted);margin-top:14px;letter-spacing:1px;}
 
 /* 页脚 */
-footer{padding:50px 48px 36px;background:var(--bg);border-top:1px solid var(--border);
+footer{padding:60px 48px 36px;background:var(--bg);border-top:1px solid var(--border);
 position:relative;}
 footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
 width:160px;height:1px;background:linear-gradient(90deg,transparent,var(--brand),transparent);}
-.footer-inner{max-width:1400px;margin:0 auto;text-align:center;}
-.footer-brand{font-size:18px;font-weight:800;color:var(--text);letter-spacing:2px;margin-bottom:6px;}
-.footer-brand span{color:var(--brand);}
-.footer-desc{font-size:13px;color:var(--text-muted);margin-bottom:24px;letter-spacing:1px;}
-.footer-social{display:flex;gap:16px;justify-content:center;margin-bottom:28px;}
-.footer-social a{width:40px;height:40px;border-radius:50%;background:var(--bg-card);
+.footer-inner{max-width:1400px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand-col .footer-logo{width:56px;margin-bottom:16px;}
+.footer-brand-col .footer-brand{font-size:20px;font-weight:800;color:var(--text);
+letter-spacing:2px;margin-bottom:8px;}
+.footer-brand-col .footer-brand span{color:var(--brand);}
+.footer-brand-col .footer-desc{font-size:13px;color:var(--text-muted);line-height:1.8;
+max-width:280px;}
+.footer-col h5{font-size:14px;font-weight:700;color:var(--text);margin-bottom:18px;
+letter-spacing:1px;}
+.footer-col a{display:block;font-size:13px;color:var(--text-soft);text-decoration:none;
+margin-bottom:10px;transition:color 0.3s ease;cursor:pointer;}
+.footer-col a:hover{color:var(--brand);}
+.footer-social{display:flex;gap:12px;margin-top:8px;}
+.footer-social a{width:38px;height:38px;border-radius:50%;background:var(--bg-card);
 border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
-color:var(--text-soft);transition:all 0.3s ease;text-decoration:none;}
+color:var(--text-soft);transition:all 0.3s ease;text-decoration:none;margin:0;}
 .footer-social a:hover{transform:translateY(-3px);border-color:var(--brand);
 color:var(--brand);box-shadow:0 6px 20px rgba(255,45,45,0.2);}
-.footer-social a svg{width:18px;height:18px;}
-.footer-copy{font-size:12px;color:var(--text-muted);letter-spacing:1px;
-padding-top:24px;border-top:1px solid var(--border);}
+.footer-social a svg{width:16px;height:16px;}
+.footer-bottom{padding-top:28px;border-top:1px solid var(--border);
+display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-size:12px;color:var(--text-muted);letter-spacing:1px;}
+.footer-icp{font-size:12px;color:var(--text-muted);}
 
 /* 回到顶部 */
-.back-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;
+.back-top{position:fixed;bottom:32px;right:32px;width:50px;height:50px;
 border-radius:50%;background:var(--bg-card);border:1px solid var(--border-strong);
 display:flex;align-items:center;justify-content:center;cursor:pointer;
 color:var(--text-soft);z-index:998;opacity:0;visibility:hidden;
 transform:translateY(20px);transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
-backdrop-filter:blur(10px);}
+backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,0.3);}
 .back-top.show{opacity:1;visibility:visible;transform:translateY(0);}
 .back-top:hover{background:var(--brand);border-color:var(--brand);color:#fff;
-transform:translateY(-4px);box-shadow:0 8px 24px rgba(255,45,45,0.4);}
+transform:translateY(-4px);box-shadow:0 8px 28px rgba(255,45,45,0.45);}
 .back-top svg{width:20px;height:20px;}
 
 /* 滚动渐入 */
@@ -442,6 +522,8 @@ transform:translateY(-4px);box-shadow:0 8px 24px rgba(255,45,45,0.4);}
 .stat-item:not(:last-child)::after{display:none;}
 .works-grid{grid-template-columns:1fr;}
 .about-content{grid-template-columns:1fr;gap:44px;}
+.footer-top{grid-template-columns:1fr 1fr;gap:30px;}
+.about-stats{grid-template-columns:repeat(3,1fr);}
 }
 @media(max-width:768px){
 .nav-wrap{padding:16px 20px !important;}
@@ -464,7 +546,15 @@ header.scrolled .logo{width:44px !important;}
 .social-card{width:100%;max-width:340px;}
 .about-feature{padding:22px;}
 footer{padding:40px 20px 28px;}
-.back-top{bottom:20px;right:20px;width:42px;height:42px;}
+.footer-top{grid-template-columns:1fr;gap:24px;}
+.footer-bottom{flex-direction:column;text-align:center;}
+.back-top{bottom:20px;right:20px;width:44px;height:44px;}
+.lightbox-nav{width:42px;height:42px;}
+.lightbox-prev{left:12px;}
+.lightbox-next{right:12px;}
+.about-stats{grid-template-columns:repeat(3,1fr);gap:10px;}
+.about-stat{padding:16px 8px;}
+.about-stat .as-num{font-size:24px;}
 }
 </style>
 </head>
@@ -500,6 +590,9 @@ footer{padding:40px 20px 28px;}
                 <span class="line">用镜头捕捉</span>
                 <span class="line"><span class="accent">风暴</span>之眼</span>
             </h1>
+            <div class="hero-subtitle">
+                <span class="typed" id="heroTyped">风光摄影</span>
+            </div>
             <p>极影风暴 — 高质量实拍图片与视频素材分享平台。用光影讲述故事，用画面传递力量，记录每一个值得珍藏的瞬间。</p>
             <div class="hero-actions">
                 <button class="hero-btn" onclick="document.querySelector('[data-target=material]').click()"><span>浏览素材库</span><span>→</span></button>
@@ -574,16 +667,16 @@ footer{padding:40px 20px 28px;}
 <div class="page-block material-page" id="material">
     <div class="material-header">
         <h2>风暴<span class="accent">素材库</span></h2>
-        <p>所有实拍图片与视频素材集中展示，持续更新中，探索更多视觉可能。</p>
+        <p>所有实拍图片与视频素材集中展示，点击图片可放大查看，持续更新中。</p>
     </div>
     <div class="material-content">
-        <h3 class="cat-title">青海 <span class="count">5 张作品</span></h3>
-        <div class="photo-grid">
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai1.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>青海 · 01</span></div></div>
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai2.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>青海 · 02</span></div></div>
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai3.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>青海 · 03</span></div></div>
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai4.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>青海 · 04</span></div></div>
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai5.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>青海 · 05</span></div></div>
+        <h3 class="cat-title" id="cat-qinghai">青海 <span class="count">5 张作品</span></h3>
+        <div class="photo-grid" id="photoGridMaterial">
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai1.jpg" data-caption="青海 · 01"><img src="./images/qinghai/qinghai1.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>青海 · 01</span></div></div>
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai2.jpg" data-caption="青海 · 02"><img src="./images/qinghai/qinghai2.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>青海 · 02</span></div></div>
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai3.jpg" data-caption="青海 · 03"><img src="./images/qinghai/qinghai3.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>青海 · 03</span></div></div>
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai4.jpg" data-caption="青海 · 04"><img src="./images/qinghai/qinghai4.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>青海 · 04</span></div></div>
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai5.jpg" data-caption="青海 · 05"><img src="./images/qinghai/qinghai5.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>青海 · 05</span></div></div>
         </div>
         <h3 class="cat-title">视频素材 <span class="count">即将上线</span></h3>
         <div class="video-grid">
@@ -601,38 +694,38 @@ footer{padding:40px 20px 28px;}
 <div class="page-block category-page" id="category">
     <div class="material-header">
         <h2>素材<span class="accent">分类</span></h2>
-        <p>按题材快速筛选图片与视频素材，找到你需要的创作灵感与视觉参考。</p>
+        <p>按题材快速筛选图片与视频素材，点击分类卡片可跳转至对应内容。</p>
     </div>
     <div class="category-content">
         <div class="classify-grid">
-            <div class="classify-card reveal">
+            <div class="classify-card reveal" onclick="scrollToCategory('cat-landscape')">
                 <div class="classify-icon">风</div>
-                <h4>风光摄影</h4>
+                <h4>风光摄影 <span class="arrow">→</span></h4>
                 <p>高原、山川、湖泊、天空云层实拍素材，展现大自然的壮美与辽阔，带来震撼的视觉体验。</p>
             </div>
             <div class="classify-card reveal">
                 <div class="classify-icon">人</div>
-                <h4>人文纪实</h4>
+                <h4>人文纪实 <span class="arrow">→</span></h4>
                 <p>人文民俗、经幡、地域特色实拍，记录真实的生活与文化印记，传递人文温度。</p>
             </div>
             <div class="classify-card reveal">
                 <div class="classify-icon">动</div>
-                <h4>动态视频</h4>
+                <h4>动态视频 <span class="arrow">→</span></h4>
                 <p>实拍短片、运镜视频素材，用动态画面传递更丰富的视觉体验与叙事张力。</p>
             </div>
             <div class="classify-card reveal">
                 <div class="classify-icon">+</div>
-                <h4>其他素材</h4>
+                <h4>其他素材 <span class="arrow">→</span></h4>
                 <p>后续扩充更多题材，持续更新更多领域的优质实拍内容，敬请期待。</p>
             </div>
         </div>
-        <h3 class="cat-title">风光摄影 <span class="count">5 张作品</span></h3>
-        <div class="photo-grid">
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai1.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>风光 · 01</span></div></div>
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai2.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>风光 · 02</span></div></div>
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai3.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>风光 · 03</span></div></div>
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai4.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>风光 · 04</span></div></div>
-            <div class="photo-card reveal"><img src="./images/qinghai/qinghai5.jpg" alt="青海风景" loading="lazy"><div class="photo-info"><span>风光 · 05</span></div></div>
+        <h3 class="cat-title" id="cat-landscape">风光摄影 <span class="count">5 张作品</span></h3>
+        <div class="photo-grid" id="photoGridCategory">
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai1.jpg" data-caption="风光 · 01"><img src="./images/qinghai/qinghai1.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>风光 · 01</span></div></div>
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai2.jpg" data-caption="风光 · 02"><img src="./images/qinghai/qinghai2.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>风光 · 02</span></div></div>
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai3.jpg" data-caption="风光 · 03"><img src="./images/qinghai/qinghai3.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>风光 · 03</span></div></div>
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai4.jpg" data-caption="风光 · 04"><img src="./images/qinghai/qinghai4.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>风光 · 04</span></div></div>
+            <div class="photo-card reveal" data-src="./images/qinghai/qinghai5.jpg" data-caption="风光 · 05"><img src="./images/qinghai/qinghai5.jpg" alt="青海风景" loading="lazy"><div class="zoom-icon">⤢</div><div class="photo-info"><span>风光 · 05</span></div></div>
         </div>
     </div>
 </div>
@@ -649,6 +742,36 @@ footer{padding:40px 20px 28px;}
             <p>极影风暴，个人实拍素材分享站点。所有素材均为实地拍摄，专注于风光摄影、人文纪实与动态视频创作。</p>
             <p>我们相信，每一张照片、每一段视频，都是时间的切片，是光影的诗篇。持续更新更多摄影作品与视频片段，用镜头记录世界，用光影讲述故事。</p>
             <p>从高原到城市，从自然到人文，极影风暴致力于呈现最真实、最具冲击力的视觉内容，为创作者提供高质量的素材参考。</p>
+            <div class="about-philosophy">
+                <h4>创作理念</h4>
+                <p>坚持实地实拍，拒绝AI生成。用最真实的镜头语言，传递最纯粹的视觉力量。每一次快门，都是与世界的对话；每一帧画面，都是对美的致敬。</p>
+            </div>
+            <div class="about-team">
+                <h4>核心团队</h4>
+                <div class="team-members">
+                    <div class="team-member">
+                        <div class="team-avatar">影</div>
+                        <div class="tm-info">
+                            <div class="tm-name">主理人</div>
+                            <div class="tm-role">摄影 / 导演</div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">后</div>
+                        <div class="tm-info">
+                            <div class="tm-name">后期师</div>
+                            <div class="tm-role">调色 / 剪辑</div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">运</div>
+                        <div class="tm-info">
+                            <div class="tm-name">运营</div>
+                            <div class="tm-role">内容 / 推广</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="about-features">
             <div class="about-feature reveal">
@@ -679,6 +802,20 @@ footer{padding:40px 20px 28px;}
                     <p>同步在抖音、微信等平台发布创作内容，关注我们获取最新作品与幕后故事。</p>
                 </div>
             </div>
+            <div class="about-stats reveal">
+                <div class="about-stat">
+                    <div class="as-num">5+</div>
+                    <div class="as-label">摄影作品</div>
+                </div>
+                <div class="about-stat">
+                    <div class="as-num">3</div>
+                    <div class="as-label">团队成员</div>
+                </div>
+                <div class="about-stat">
+                    <div class="as-num">∞</div>
+                    <div class="as-label">创作热情</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -704,7 +841,7 @@ footer{padding:40px 20px 28px;}
     </div>
     <div class="social-cards">
         <!-- 抖音卡片1 -->
-        <a class="social-card douyin-card reveal" href="https://www.douyin.com/@XTechStorm" target="_blank" rel="noopener">
+        <a class="social-card douyin-card reveal" href="https://v.douyin.com/iu--vvr7hGQ/" target="_blank" rel="noopener">
             <svg class="social-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M33 6c.5 3.5 2 6.2 5.2 7.5V17c-2.8 0-5.2-.8-7.2-2.3v11.8c0 7.5-5.5 13.5-13 13.5S5 34 5 26.5c0-7 5.7-12.7 12.7-12.7.5 0 1 0 1.5.1v6.2c-.5-.1-1-.2-1.5-.2-3.5 0-6.3 2.8-6.3 6.3s2.8 6.2 6.3 6.2 6.3-2.8 6.3-6.3V6h6z"/>
             </svg>
@@ -713,7 +850,7 @@ footer{padding:40px 20px 28px;}
             <span class="social-tag">前往关注 →</span>
         </a>
         <!-- 抖音卡片2 -->
-        <a class="social-card douyin-card reveal" href="https://www.douyin.com/@45315455578" target="_blank" rel="noopener">
+        <a class="social-card douyin-card reveal" href="https://v.douyin.com/O0flzWR5mIg/" target="_blank" rel="noopener">
             <svg class="social-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M33 6c.5 3.5 2 6.2 5.2 7.5V17c-2.8 0-5.2-.8-7.2-2.3v11.8c0 7.5-5.5 13.5-13 13.5S5 34 5 26.5c0-7 5.7-12.7 12.7-12.7.5 0 1 0 1.5.1v6.2c-.5-.1-1-.2-1.5-.2-3.5 0-6.3 2.8-6.3 6.3s2.8 6.2 6.3 6.2 6.3-2.8 6.3-6.3V6h6z"/>
             </svg>
@@ -736,23 +873,57 @@ footer{padding:40px 20px 28px;}
     </div>
 </div>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
 <!-- 页脚 -->
 <footer>
     <div class="footer-inner">
-        <div class="footer-brand">极影风暴 <span>EXTREME VISUAL STORM</span></div>
-        <div class="footer-desc">用镜头记录世界 · 用光影讲述故事</div>
-        <div class="footer-social">
-            <a href="https://www.douyin.com/@XTechStorm" target="_blank" rel="noopener" title="抖音">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8c.5 1.3 1.3 2.4 2.4 3v1.5c-1.3 0-2.5-.4-3.5-1.1v5.3c0 3.4-2.5 6.1-5.9 6.1s-6-2.7-6-6.1 2.6-6 6-6c.2 0 .5 0 .7.1v2.8c-.2 0-.5-.1-.7-.1-1.6 0-2.9 1.3-2.9 2.9s1.3 2.8 2.9 2.8 2.9-1.3 2.9-2.8V5.8h2.1z"/></svg>
-            </a>
-            <a href="https://www.douyin.com/@45315455578" target="_blank" rel="noopener" title="抖音">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8c.5 1.3 1.3 2.4 2.4 3v1.5c-1.3 0-2.5-.4-3.5-1.1v5.3c0 3.4-2.5 6.1-5.9 6.1s-6-2.7-6-6.1 2.6-6 6-6c.2 0 .5 0 .7.1v2.8c-.2 0-.5-.1-.7-.1-1.6 0-2.9 1.3-2.9 2.9s1.3 2.8 2.9 2.8 2.9-1.3 2.9-2.8V5.8h2.1z"/></svg>
-            </a>
-            <a href="#" title="微信" onclick="return false;">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.7 4C4.9 4 2 6.7 2 10.2c0 2 1.1 3.8 2.9 5L4 18l3-1.5c.8.2 1.6.3 2.4.3h.4c-.1-.4-.2-.9-.2-1.3 0-3.3 3.2-6 7.1-6h.4C15.8 6.3 12.6 4 8.7 4zm-2.8 4c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1zm5.5 0c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1z"/><path d="M22 15.5c0-3-2.9-5.5-6.5-5.5s-6.5 2.5-6.5 5.5 2.9 5.5 6.5 5.5c.8 0 1.5-.1 2.2-.3L20 22l-.7-1.9c1.6-1 2.7-2.6 2.7-4.6zm-8.5-.8c-.4 0-.8-.4-.8-.8s.4-.8.8-.8.8.4.8.8-.4.8-.8.8zm4 0c-.4 0-.8-.4-.8-.8s.4-.8.8-.8.8.4.8.8-.4.8-.8.8z"/></svg>
-            </a>
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <img class="footer-logo" src="https://iili.io/CiU37Ul.png" alt="极影风暴">
+                <div class="footer-brand">极影风暴 <span>EXTREME VISUAL STORM</span></div>
+                <div class="footer-desc">用镜头记录世界，用光影讲述故事。高质量实拍图片与视频素材分享平台。</div>
+            </div>
+            <div class="footer-col">
+                <h5>导航</h5>
+                <a onclick="document.querySelector('[data-target=home]').click()">首页</a>
+                <a onclick="document.querySelector('[data-target=material]').click()">风暴素材库</a>
+                <a onclick="document.querySelector('[data-target=category]').click()">素材分类</a>
+                <a onclick="document.querySelector('[data-target=about]').click()">关于我们</a>
+            </div>
+            <div class="footer-col">
+                <h5>素材分类</h5>
+                <a onclick="document.querySelector('[data-target=category]').click();setTimeout(()=>scrollToCategory('cat-landscape'),300)">风光摄影</a>
+                <a>人文纪实</a>
+                <a>动态视频</a>
+                <a>其他素材</a>
+            </div>
+            <div class="footer-col">
+                <h5>关注我们</h5>
+                <div class="footer-social">
+                    <a href="https://v.douyin.com/iu--vvr7hGQ/" target="_blank" rel="noopener" title="抖音-极影风暴">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8c.5 1.3 1.3 2.4 2.4 3v1.5c-1.3 0-2.5-.4-3.5-1.1v5.3c0 3.4-2.5 6.1-5.9 6.1s-6-2.7-6-6.1 2.6-6 6-6c.2 0 .5 0 .7.1v2.8c-.2 0-.5-.1-.7-.1-1.6 0-2.9 1.3-2.9 2.9s1.3 2.8 2.9 2.8 2.9-1.3 2.9-2.8V5.8h2.1z"/></svg>
+                    </a>
+                    <a href="https://v.douyin.com/O0flzWR5mIg/" target="_blank" rel="noopener" title="抖音-爱克团">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8c.5 1.3 1.3 2.4 2.4 3v1.5c-1.3 0-2.5-.4-3.5-1.1v5.3c0 3.4-2.5 6.1-5.9 6.1s-6-2.7-6-6.1 2.6-6 6-6c.2 0 .5 0 .7.1v2.8c-.2 0-.5-.1-.7-.1-1.6 0-2.9 1.3-2.9 2.9s1.3 2.8 2.9 2.8 2.9-1.3 2.9-2.8V5.8h2.1z"/></svg>
+                    </a>
+                    <a href="#" title="微信" onclick="return false;">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.7 4C4.9 4 2 6.7 2 10.2c0 2 1.1 3.8 2.9 5L4 18l3-1.5c.8.2 1.6.3 2.4.3h.4c-.1-.4-.2-.9-.2-1.3 0-3.3 3.2-6 7.1-6h.4C15.8 6.3 12.6 4 8.7 4zm-2.8 4c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1zm5.5 0c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1z"/><path d="M22 15.5c0-3-2.9-5.5-6.5-5.5s-6.5 2.5-6.5 5.5 2.9 5.5 6.5 5.5c.8 0 1.5-.1 2.2-.3L20 22l-.7-1.9c1.6-1 2.7-2.6 2.7-4.6zm-8.5-.8c-.4 0-.8-.4-.8-.8s.4-.8.8-.8.8.4.8.8-.4.8-.8.8zm4 0c-.4 0-.8-.4-.8-.8s.4-.8.8-.8.8.4.8.8-.4.8-.8.8z"/></svg>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="footer-copy">© 2026 极影风暴 · 用镜头记录世界 · All Rights Reserved</div>
+        <div class="footer-bottom">
+            <div class="footer-copy">© 2026 极影风暴 · 用镜头记录世界 · All Rights Reserved</div>
+            <div class="footer-icp">EXTREME VISUAL STORM</div>
+        </div>
     </div>
 </footer>
 
@@ -793,6 +964,22 @@ navItems.forEach(item=>{
     });
 });
 
+// 分类卡片跳转
+function scrollToCategory(id){
+    const el=document.getElementById(id);
+    if(el){
+        // 如果当前不在分类页，先切换
+        if(!document.getElementById('category').classList.contains('show')){
+            document.querySelector('[data-target=category]').click();
+            setTimeout(()=>{
+                el.scrollIntoView({behavior:'smooth',block:'start'});
+            },400);
+        }else{
+            el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+    }
+}
+
 // 滚动渐入
 function initReveal(){
     const reveals=document.querySelectorAll('.reveal');
@@ -808,6 +995,68 @@ function initReveal(){
     reveals.forEach(el=>observer.observe(el));
 }
 initReveal();
+
+// Hero 打字机效果
+(function(){
+    const el=document.getElementById('heroTyped');
+    if(!el)return;
+    const words=['风光摄影','人文纪实','动态视频','视觉创作'];
+    let wi=0,ci=0,deleting=false;
+    function tick(){
+        const word=words[wi];
+        if(!deleting){
+            el.textContent=word.substring(0,ci+1);
+            ci++;
+            if(ci===word.length){deleting=true;setTimeout(tick,1800);return;}
+        }else{
+            el.textContent=word.substring(0,ci-1);
+            ci--;
+            if(ci===0){deleting=false;wi=(wi+1)%words.length;}
+        }
+        setTimeout(tick,deleting?60:120);
+    }
+    setTimeout(tick,1600);
+})();
+
+// Lightbox 图片放大
+let currentPhotoIndex=0;
+let photoCards=[];
+function initLightbox(){
+    photoCards=Array.from(document.querySelectorAll('.photo-card'));
+    photoCards.forEach((card,i)=>{
+        card.addEventListener('click',()=>openLightbox(i));
+    });
+}
+function openLightbox(index){
+    currentPhotoIndex=index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('show');
+    document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('show');
+    document.body.style.overflow='';
+}
+function navLightbox(dir){
+    currentPhotoIndex=(currentPhotoIndex+dir+photoCards.length)%photoCards.length;
+    updateLightbox();
+}
+function updateLightbox(){
+    const card=photoCards[currentPhotoIndex];
+    if(!card)return;
+    document.getElementById('lightboxImg').src=card.dataset.src;
+    document.getElementById('lightboxCaption').textContent=card.dataset.caption||'';
+}
+document.getElementById('lightbox').addEventListener('click',(e)=>{
+    if(e.target.id==='lightbox')closeLightbox();
+});
+document.addEventListener('keydown',(e)=>{
+    if(!document.getElementById('lightbox').classList.contains('show'))return;
+    if(e.key==='Escape')closeLightbox();
+    if(e.key==='ArrowLeft')navLightbox(-1);
+    if(e.key==='ArrowRight')navLightbox(1);
+});
+initLightbox();
 
 // Hero 粒子背景
 (function(){
@@ -841,7 +1090,6 @@ initReveal();
             ctx.fillStyle=`rgba(255,45,45,${p.a})`;
             ctx.fill();
         });
-        // 连线
         for(let i=0;i<particles.length;i++){
             for(let j=i+1;j<particles.length;j++){
                 const dx=particles[i].x-particles[j].x;
